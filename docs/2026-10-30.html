@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIエージェント Daily Digest 2026-10-30</title>
+<style>
+body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.7;margin:0 auto;padding:16px;max-width:640px;color:#222;background:#fff}
+h1{font-size:1.4rem}h2{font-size:1.1rem;margin:0 0 .5em}
+article,.note{border:1px solid #ddd;border-radius:8px;padding:12px 14px;margin:16px 0}
+h3{font-size:.95rem;margin:.8em 0 .1em;color:#555}p{margin:.2em 0}
+a{color:#0b5fff;word-break:break-all}.tag{font-size:.8rem;color:#b00}
+@media(prefers-color-scheme:dark){body{background:#111;color:#eee}article,.note{border-color:#444}h3{color:#aaa}a{color:#7aa7ff}.tag{color:#ff8a8a}}
+</style>
+</head>
+<body>
+<p><a href="index.html">← 一覧へ</a></p>
+<h1>AIエージェント Daily Digest<br>2026-10-30</h1>
+<p>対象: 2026-10-29〜30(UTC)の約24時間。公式ページで日付を確認できたものを優先し、確認できないものは「未確認」と明記しています。</p>
+
+<article>
+<h2>1. Claude Code 2.1.314 がリリース</h2>
+<h3>何が起きたか</h3>
+<p>権限設定 <code>permissions.blockWritesOutsideWorkingDirectories</code> が追加され、Write/Edit/NotebookEdit が作業ディレクトリ外のパスを全モードで拒否できるようになった。VS Code と Claude Desktop の Code タブには、200K トークン超の会話を放置した際に要約する「アイドル圧縮」も追加。<code>claude -p</code> は起動失敗時に無言で終了コード0を返す不具合が直り、エラー表示と終了コード1になった。</p>
+<h3>なぜ役立つか</h3>
+<p>自動実行(bypass系モード等)でも書き込み範囲を作業ディレクトリに限定できるため安全性が上がる。CIやスクリプトで <code>claude -p</code> を使う場合、失敗を終了コードで検知できるようになる。</p>
+<h3>出典</h3>
+<p><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog(公式)</a></p>
+</article>
+
+<article>
+<h2>2. Claude API に Usage and Cost Analytics API(ベータ)</h2>
+<h3>何が起きたか</h3>
+<p>10/29付で、トークン使用量とコストを取得する <code>/v1/organizations/analytics/usage</code> と <code>/cost</code> がベータ公開された。モデル、ワークスペース、APIキー、ユーザー/サービスアカウントで絞り込める。従来のUsage and Cost APIとClaude Enterpriseの使用量レポートAPIは「legacy」扱い(引き続きサポート)。</p>
+<h3>なぜ役立つか</h3>
+<p>エージェントはトークン消費が読みにくいが、APIキーやワークスペース単位でコストを集計・監視する仕組みを自前で作りやすくなる。既存APIを使っている場合は移行ガイドの確認が必要。</p>
+<h3>出典</h3>
+<p><a href="https://platform.claude.com/docs/en/release-notes/overview">Claude Platform release notes(公式)</a></p>
+</article>
+
+<article>
+<h2>3. 自律エージェント「Cipher」がEPICSの脆弱性4件を発見 <span class="tag">日付・詳細は未確認</span></h2>
+<h3>何が起きたか</h3>
+<p>Causal Security のエージェント Cipher が、粒子加速器などで使われるOSS制御基盤 EPICS Base の未知の脆弱性4件を約3時間49分で見つけたと報じられている。修正版は EPICS Base 7.0.11。</p>
+<h3>なぜ役立つか</h3>
+<p>エージェントによる脆弱性探索が実用域に入りつつある一例。EPICSを使っている場合は 7.0.11 への更新確認が必要。</p>
+<h3>注意(未確認事項)</h3>
+<p>速度や自律度は同社側の主張で第三者検証は未確認。記事の公開日が24時間以内かも確認できていない。CVE番号など細部も一次情報では未確認。</p>
+<h3>出典</h3>
+<p><a href="https://letsdatascience.com/news/causal-securitys-ai-agent-cipher-finds-four-epics-base-vulne-48863186">Let's Data Science(二次情報)</a></p>
+</article>
+
+<div class="note">
+<h2>該当なし / 未確認の領域</h2>
+<p><strong>OpenAI:</strong> 公式サイトに接続できず、24時間以内の発表は確認できませんでした(該当なしではなく「未確認」)。</p>
+<p><strong>Google:</strong> 24時間以内の該当は確認できませんでした(直近の大きな発表は10/8のGemini agentで対象外)。</p>
+<p><strong>MCP:</strong> 24時間以内の新しい仕様改訂は確認できませんでした。</p>
+<p><strong>Anthropicニュース:</strong> 10/29〜30付の投稿はありませんでした。</p>
+</div>
+
+<p style="font-size:.8rem;color:#777">本ページは各出典の要約であり、投資・購入の助言ではありません。</p>
+</body>
+</html>
