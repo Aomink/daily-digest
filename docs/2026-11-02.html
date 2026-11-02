@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIエージェント Daily Digest 2026-11-02</title>
+<style>
+body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.7;margin:0 auto;padding:16px;max-width:640px;color:#222;background:#fff}
+h1{font-size:1.4rem}h2{font-size:1.1rem;margin:0 0 .5em}
+article,.note{border:1px solid #ddd;border-radius:8px;padding:12px 14px;margin:16px 0}
+h3{font-size:.95rem;margin:.8em 0 .1em;color:#555}p{margin:.2em 0}
+a{color:#0b5fff;word-break:break-all}.tag{font-size:.8rem;color:#b00}
+@media(prefers-color-scheme:dark){body{background:#111;color:#eee}article,.note{border-color:#444}h3{color:#aaa}a{color:#7aa7ff}.tag{color:#ff8a8a}}
+</style>
+</head>
+<body>
+<p><a href="index.html">← 一覧へ</a></p>
+<h1>AIエージェント Daily Digest<br>2026-11-02</h1>
+<p>対象: 2026-11-01〜02(JST朝9時時点)の約24時間。ただし前回(10/31朝)以降のClaude Code 2.1.316は10/31付のため、期間の境界として含めています。公式ページで確認できたものだけを掲載し、確認できないものは「未確認」と明記しています。該当は少なめです。</p>
+
+<article>
+<h2>1. Claude Code 2.1.316(10/31付)</h2>
+<h3>何が起きたか</h3>
+<p>環境変数 <code>CLAUDE_CODE_SUBAGENT_EFFORT</code> でサブエージェントのeffortを指定でき、<code>CLAUDE_CODE_DISABLE_ULTRATHINK</code> で <code>ultrathink</code> キーワードを無効化できるようになった。Claude apps gateway には共有の予算枠(pooled group budgets)と <code>managed.policy_mode: layered</code> が追加された。Team/Enterprise の server-managed settings は承認プロンプトなしで適用される。</p>
+<h3>なぜ役立つか</h3>
+<p>サブエージェントを多用する運用で、コストと思考量を設定で調整しやすくなる。組織配布では、予算のグループ管理や設定の自動適用で運用の手間が減る。</p>
+<h3>出典</h3>
+<p><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog(公式)</a></p>
+</article>
+
+<article>
+<h2>2. Claude Agent SDK for Python 0.2.176</h2>
+<h3>何が起きたか</h3>
+<p>10/31付のリリース。同梱のClaude CLIが2.1.316に更新された。ページ上は公開APIの変更はなく、CLIの更新追従のみ。</p>
+<h3>なぜ役立つか</h3>
+<p>SDK経由でエージェントを動かしている場合、更新すると上記CLIの変更(サブエージェントのeffort設定など)を取り込める。挙動変更はないため、アップデートの心理的負担は小さい。</p>
+<h3>出典</h3>
+<p><a href="https://github.com/anthropics/claude-agent-sdk-python/releases">claude-agent-sdk-python Releases(GitHub)</a></p>
+</article>
+
+<div class="note">
+<h2>該当なし / 未確認の領域</h2>
+<p><strong>OpenAI(公式サイト):</strong> openai.com にこの環境から接続できず<strong>未確認</strong>(該当なしではありません)。</p>
+<p><strong>OpenAI Agents SDK:</strong> GitHubの最新リリースは v0.24.0(10/15付)で、24時間以内の新リリースは<strong>該当なし</strong>。</p>
+<p><strong>Google:</strong> blog.google に接続できず<strong>未確認</strong>です。</p>
+<p><strong>MCP:</strong> 公式ブログの最新は2026-09-29付で、24時間以内の新規投稿は<strong>該当なし</strong>。各SDKのリリースは<strong>未確認</strong>です。</p>
+<p><strong>Anthropicニュース:</strong> 最新は10/28付で、24時間以内の投稿は<strong>該当なし</strong>。</p>
+<p><strong>Claude Platform リリースノート:</strong> 10/30のOpus 4.8 fast mode廃止予定(11/30削除)以降の新規エントリは確認できず<strong>該当なし</strong>(前回ダイジェストで掲載済み)。</p>
+<p><strong>実務向け新ツール・事例:</strong> 日付を確認できる24時間以内の情報は見つからず、<strong>該当なし</strong>(網羅検索はできていません)。</p>
+</div>
+
+<p style="font-size:.8rem;color:#777">本ページは各出典の要約であり、投資・購入の助言ではありません。</p>
+</body>
+</html>
