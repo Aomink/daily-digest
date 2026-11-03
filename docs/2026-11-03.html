@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIエージェント Daily Digest 2026-11-03</title>
+<style>
+body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.7;margin:0 auto;padding:16px;max-width:640px;color:#222;background:#fff}
+h1{font-size:1.4rem}h2{font-size:1.1rem;margin:0 0 .5em}
+article,.note{border:1px solid #ddd;border-radius:8px;padding:12px 14px;margin:16px 0}
+h3{font-size:.95rem;margin:.8em 0 .1em;color:#555}p{margin:.2em 0}
+a{color:#0b5fff;word-break:break-all}.tag{font-size:.8rem;color:#b00}
+@media(prefers-color-scheme:dark){body{background:#111;color:#eee}article,.note{border-color:#444}h3{color:#aaa}a{color:#7aa7ff}.tag{color:#ff8a8a}}
+</style>
+</head>
+<body>
+<p><a href="index.html">← 一覧へ</a></p>
+<h1>AIエージェント Daily Digest<br>2026-11-03</h1>
+<p>対象: 2026-11-02〜03(JST朝時点)の約24時間。公式ページで日付を確認できたものだけを掲載し、確認できないものは「未確認」と明記しています。該当は少なめです。</p>
+
+<article>
+<h2>1. Messages API に「Message threads」(ベータ)</h2>
+<h3>何が起きたか</h3>
+<p>11/2付で、Messages API に message threads が追加された。会話をサーバー側で保持するため、2回目以降はリクエストに新しいメッセージだけを送ればよい。ベータヘッダ <code>message-threads-2026-08-12</code> で有効化する。スレッドは最後のリクエストから5分で失効し、最終利用から最長1時間以内に削除される。Claude API、AWS上のClaude Platform、Google Cloud、Microsoft Foundryで利用可能とされている。</p>
+<h3>なぜ役立つか</h3>
+<p>長い会話やエージェントのループでは毎回履歴全体を送る必要がなくなり、リクエストが小さくなって初回トークンまでの時間も短くなる。5分で失効する点は、間隔が空く処理では設計に注意が必要。</p>
+<h3>出典</h3>
+<p><a href="https://platform.claude.com/docs/en/release-notes/overview">Claude Platform release notes(公式)</a></p>
+</article>
+
+<article>
+<h2>2. 【対象期間外・補足】Claude Code 2.1.316</h2>
+<h3>何が起きたか</h3>
+<p>10/31リリースのため24時間の範囲外だが、過去のダイジェストでは未掲載のため補足する。サブエージェントのeffortを指定する <code>CLAUDE_CODE_SUBAGENT_EFFORT</code>、<code>ultrathink</code> キーワードを無効化する <code>CLAUDE_CODE_DISABLE_ULTRATHINK</code>、<code>managed.policy_mode: layered</code>(該当する全ポリシーを適用)などが追加された。34件のバグ修正があり、終了後にシェルコマンドが残る問題も含まれる。</p>
+<h3>なぜ役立つか</h3>
+<p>サブエージェントを多用する運用で、コストと品質のバランスを個別に調整しやすくなる。</p>
+<h3>出典</h3>
+<p><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog(公式)</a></p>
+</article>
+
+<div class="note">
+<h2>該当なし / 未確認の領域</h2>
+<p><strong>Claude Code:</strong> 11/1〜11/3付の新リリースは<strong>該当なし</strong>(最新は10/31の2.1.316)。</p>
+<p><strong>Anthropicニュース:</strong> 最新は10/28付で、24時間以内の投稿は<strong>該当なし</strong>。</p>
+<p><strong>OpenAI:</strong> platform.openai.com には接続できず公式changelogは<strong>未確認</strong>。検索でも11月付の発表は見つからず、該当なしとは断定できません。openai-agents-python の最新リリースは v0.24.0(10/15)で、期間内の更新は<strong>該当なし</strong>(GitHub上で確認)。</p>
+<p><strong>Google:</strong> 検索では11月付の発表は見つからず<strong>未確認</strong>(公式ブログには接続していません)。</p>
+<p><strong>MCP:</strong> python-sdk の最新は v2.3.0(10/2)で期間内は<strong>該当なし</strong>。公式ブログ・他SDKは<strong>未確認</strong>。</p>
+</div>
+
+<p style="font-size:.8rem;color:#777">本ページは各出典の要約であり、投資・購入の助言ではありません。</p>
+</body>
+</html>
