@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIエージェント Daily Digest 2026-11-04</title>
+<style>
+body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.7;margin:0 auto;padding:16px;max-width:640px;color:#222;background:#fff}
+h1{font-size:1.4rem}h2{font-size:1.1rem;margin:0 0 .5em}
+article,.note{border:1px solid #ddd;border-radius:8px;padding:12px 14px;margin:16px 0}
+h3{font-size:.95rem;margin:.8em 0 .1em;color:#555}p{margin:.2em 0}
+a{color:#0b5fff;word-break:break-all}.tag{font-size:.8rem;color:#b00}
+@media(prefers-color-scheme:dark){body{background:#111;color:#eee}article,.note{border-color:#444}h3{color:#aaa}a{color:#7aa7ff}.tag{color:#ff8a8a}}
+</style>
+</head>
+<body>
+<p><a href="index.html">← 一覧へ</a></p>
+<h1>AIエージェント Daily Digest<br>2026-11-04</h1>
+<p>対象: 2026-11-03〜04(JST)の約24時間。公式ページで日付を確認できたものだけを掲載し、確認できないものは「未確認」と明記しています。該当は少なめです。</p>
+
+<article>
+<h2>1. Messages API に「Message threads」(ベータ)</h2>
+<h3>何が起きたか</h3>
+<p>11/2付。会話をサーバー側で保持し、2回目以降は新しいメッセージだけを送れるようになった。ベータヘッダは <code>message-threads-2026-08-12</code>。スレッドは最後のリクエストから5分で失効し、最終利用から1時間以内に削除される。ZDR(ゼロデータ保持)の対象外と記載されている。</p>
+<h3>なぜ役立つか</h3>
+<p>長いエージェントループで毎ターン全履歴を再送する必要がなくなり、リクエストが小さくなって初回トークンまでの時間も短くなる。ただしZDR対象外なので、データ要件のある案件では事前確認が必要。</p>
+<h3>出典</h3>
+<p><a href="https://platform.claude.com/docs/en/build-with-claude/message-threads">Message threads(公式ドキュメント)</a></p>
+</article>
+
+<article>
+<h2>2. Claude Code 2.1.317:フック失敗時にブロック、送信前確認など</h2>
+<h3>何が起きたか</h3>
+<p>11/3リリース。Agent SDKのフックコールバックに <code>onFailure: "block"</code> が追加され、コールバックが失敗したら処理を止められる。Webやシェルのツール呼び出しでアカウントのメールアドレスをネットワーク送信する前に確認する仕組み、<code>/schedule</code> で意図しないコネクタが付く場合の警告も追加。Readツールは「ファイル未変更」スタブを返さなくなり、再読込で内容が返る。<code>claude -p</code> はディスクフルやクォータで書き込みに失敗したとき終了コード1を返す。</p>
+<h3>なぜ役立つか</h3>
+<p>承認や監査をフックで実装している場合、フック自体が壊れても素通りしない設計にできる。CIで <code>claude -p</code> を使う場合、書き込み失敗を検知しやすくなる。</p>
+<h3>出典</h3>
+<p><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog(公式)</a></p>
+</article>
+
+<article>
+<h2>3. Claude Agent SDK for Python 0.2.177</h2>
+<h3>何が起きたか</h3>
+<p>11/3リリース。<code>HookMatcher</code> に <code>on_failure</code> が追加され、<code>"block"</code> を指定するとコールバックが例外を出す/None を返す/CLIに拒否される値を返す場合に処理をブロックする(既定は <code>"continue"</code>)。古いCLIと組み合わせると <code>CLIConnectionError</code> になる。同梱CLIは2.1.317。</p>
+<h3>なぜ役立つか</h3>
+<p>自作エージェントで権限チェックや危険コマンド検査をフックにしている場合、フェイルクローズ(失敗時は止める)にできる。更新時はCLIとSDKのバージョン整合に注意。</p>
+<h3>出典</h3>
+<p><a href="https://github.com/anthropics/claude-agent-sdk-python/releases">claude-agent-sdk-python releases(GitHub)</a></p>
+</article>
+
+<article>
+<h2>4. Claude API:3モデルのテキストに透かし(ウォーターマーク)</h2>
+<h3>何が起きたか</h3>
+<p>11/3付。Claude Mythos 5、Opus 4.7、Sonnet 4.6 が生成するテキストにAnthropicのテキスト透かしが付く(対象プラットフォームは公式サポート記事を参照)。Sonnet 4.6 では <code>temperature</code>・<code>top_p</code>・<code>top_k</code> を既定外にすると付かない場合がある。</p>
+<h3>なぜ役立つか</h3>
+<p>生成物を業務文書や公開コンテンツに使うエージェントでは、出力に透かしが入る前提で運用・社内ルールを確認しておける。具体的な仕組みの詳細は未確認(公式記事で要確認)。</p>
+<h3>出典</h3>
+<p><a href="https://platform.claude.com/docs/en/release-notes/overview">Claude Platform release notes(公式)</a></p>
+</article>
+
+<div class="note">
+<h2>該当なし / 未確認の領域</h2>
+<p><strong>OpenAI:</strong> openai.com にこの環境から接続できず、24時間以内の発表は<strong>未確認</strong>です(該当なしではありません)。</p>
+<p><strong>Google:</strong> blog.google に接続できず<strong>未確認</strong>です。</p>
+<p><strong>MCP:</strong> 公式ブログの最新記事は10/30付(Ruby SDKがTier 1に)で、24時間以内の新規投稿は<strong>該当なし</strong>。各SDKのリリースは今回確認していないため<strong>未確認</strong>。</p>
+<p><strong>Anthropicニュース:</strong> 最新は10/28付で、24時間以内の投稿は<strong>該当なし</strong>。</p>
+<p><strong>OpenAI Agents SDK / TypeScript版Agent SDK:</strong> 今回は確認しておらず<strong>未確認</strong>です。</p>
+<p><strong>一般Web検索:</strong> 直近の有用な結果が得られず、新ツール・事例は<strong>未確認</strong>です。</p>
+</div>
+
+<p style="font-size:.8rem;color:#777">本ページは各出典の要約であり、投資・購入の助言ではありません。</p>
+</body>
+</html>
