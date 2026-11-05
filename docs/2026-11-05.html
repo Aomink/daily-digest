@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIエージェント Daily Digest 2026-11-05</title>
+<style>
+body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.7;margin:0 auto;padding:16px;max-width:640px;color:#222;background:#fff}
+h1{font-size:1.4rem}h2{font-size:1.1rem;margin:0 0 .5em}
+article,.note{border:1px solid #ddd;border-radius:8px;padding:12px 14px;margin:16px 0}
+h3{font-size:.95rem;margin:.8em 0 .1em;color:#555}p{margin:.2em 0}
+a{color:#0b5fff;word-break:break-all}.tag{font-size:.8rem;color:#b00}
+@media(prefers-color-scheme:dark){body{background:#111;color:#eee}article,.note{border-color:#444}h3{color:#aaa}a{color:#7aa7ff}.tag{color:#ff8a8a}}
+</style>
+</head>
+<body>
+<p><a href="index.html">← 一覧へ</a></p>
+<h1>AIエージェント Daily Digest<br>2026-11-05</h1>
+<p>対象: 2026-11-04〜05(JST朝9時時点)の約24時間が基本です。ただし公式ページが日付(日単位)しか示さないため、厳密に24時間以内と言えるのは項目1のみです。項目2〜5は11/2〜11/3付の直近分で、日付を明記しています。確認できないものは「未確認」としています。</p>
+
+<article>
+<h2>1. Claude Code 2.1.318(11/4)</h2>
+<h3>何が起きたか</h3>
+<p>Claude Code 2.1.318 が出た(同梱された Agent SDK for Python 0.2.178 が11/4付)。主な変更は、claude apps gateway の mantle upstream で <code>assume_role</code> を使い他のAWSアカウントのロールを指定できること、modの <code>$.model.fork</code> に <code>effort</code> を指定して副次ジョブを低い effort で動かせること、<code>claude auth status</code> で claude.ai ログインの有効期限が見えること。<code>--continue</code> で会話が欠ける不具合も修正された。</p>
+<h3>なぜ役立つか</h3>
+<p>AWS複数アカウント構成でのコスト按分や、ログイン期限切れによる定期実行(<code>claude -p</code>)の突然の停止を事前に把握しやすくなる。リリース日はSDK側のリリースページで確認した。</p>
+<h3>出典</h3>
+<p><a href="https://github.com/anthropics/claude-agent-sdk-python/releases">claude-agent-sdk-python リリース(日付確認)</a> / <a href="https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md">Claude Code CHANGELOG(内容)</a></p>
+</article>
+
+<article>
+<h2>2. Agent SDK / Claude Code 2.1.317 のフック失敗時ブロック(11/3)</h2>
+<h3>何が起きたか</h3>
+<p>Agent SDK for Python 0.2.177(11/3)で、フックコールバックが失敗したときの挙動を指定する <code>on_failure</code> が追加された。<code>"block"</code> にすると、コールバックが例外を出した場合などに該当の操作を止める。既定は従来通り続行。Claude Code 2.1.317 には、クラウドの定期タスクに意図しないコネクタが付くと <code>/schedule</code> で警告する変更や、アカウントのメールアドレスをネットワークに送る前に確認する変更も入った。</p>
+<h3>なぜ役立つか</h3>
+<p>安全チェック用のフックが落ちたときに、素通りさせず止める「フェイルクローズ」にできる。無人実行のエージェントの権限管理に有用。古いCLIと組み合わせるとエラーになる点に注意。</p>
+<h3>出典</h3>
+<p><a href="https://github.com/anthropics/claude-agent-sdk-python/releases">claude-agent-sdk-python リリース</a> / <a href="https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md">Claude Code CHANGELOG</a></p>
+</article>
+
+<article>
+<h2>3. Claude API: Messages の「スレッド」ベータ(11/2)</h2>
+<h3>何が起きたか</h3>
+<p>Messages API にスレッド機能(ベータ)が追加された。ヘッダー <code>message-threads-2026-08-12</code> で有効化し、会話をサーバー側に保持するため、以降のリクエストは新しいメッセージだけを送ればよい。最終リクエストから5分で期限切れ、最終利用から最大1時間以内に削除される。</p>
+<h3>なぜ役立つか</h3>
+<p>長い対話のたびに履歴全体を送り直す必要が減り、実装の簡素化と通信量の削減が見込める。ただし保持期間が短いため、長期の状態管理には別途保存が必要。</p>
+<h3>出典</h3>
+<p><a href="https://platform.claude.com/docs/en/release-notes/overview">Claude Platform release notes(公式)</a></p>
+</article>
+
+<article>
+<h2>4. OpenAI Agents SDK (Python) v0.24.0-alpha.6(11/3、プレリリース)</h2>
+<h3>何が起きたか</h3>
+<p>ターン単位でのセッション制御(ターンの取得、プロンプトの待機・誘導、キャンセル)、セッション状態の可搬な保存と復元、構造化出力オプション、ネイティブコマンド向けの <code>NetworkPolicy</code>、モデル不要でテストできる <code>ScriptedResponses</code> などが追加された。<code>Runner</code> の別名廃止や <code>Turn.wait()</code> の置換など、破壊的変更を含む。</p>
+<h3>なぜ役立つか</h3>
+<p>長時間動くエージェントの中断・再開や、CIでのモデルなしテストに使える。正式版ではなくアルファなので、本番投入は慎重に。最新の安定版は10/15の v0.24.0。</p>
+<h3>出典</h3>
+<p><a href="https://github.com/openai/openai-agents-python/releases">openai-agents-python リリース</a></p>
+</article>
+
+<article>
+<h2>5. Anthropic: Claude の出力テキストへの透かし(11/3)</h2>
+<h3>何が起きたか</h3>
+<p>Claude Mythos 5、Opus 4.7、Sonnet 4.6 が生成するテキストに、Anthropic の透かしが付くようになった(対象プラットフォームはヘルプセンターの記事に記載)。Sonnet 4.6 では、<code>temperature</code> などを既定値以外にすると付かない場合がある。</p>
+<h3>なぜ役立つか</h3>
+<p>エージェントの出力を下流で検出・監査する運用や、利用ポリシーを検討する際の前提になる。詳細な適用範囲は出典の記事で要確認。</p>
+<h3>出典</h3>
+<p><a href="https://platform.claude.com/docs/en/release-notes/overview">Claude Platform release notes(公式)</a></p>
+</article>
+
+<div class="note">
+<h2>該当なし / 未確認の領域</h2>
+<p><strong>OpenAI(公式発表・ブログ):</strong> openai.com にこの環境から接続できず<strong>未確認</strong>です(該当なしではありません)。上記のAgents SDKはGitHubで確認できた分のみです。</p>
+<p><strong>Google:</strong> 公式サイトは取得せず<strong>未確認</strong>。検索では11月付の発表は見つかりませんでした(直近は10/8の Gemini at Work、二次情報)。</p>
+<p><strong>MCP:</strong> 公式ブログの最新は10/30(Ruby SDKがTier 1に)で、24時間以内の新規投稿は<strong>該当なし</strong>。</p>
+<p><strong>Anthropicニュース:</strong> 最新は10/28付で、24時間以内の投稿は<strong>該当なし</strong>。</p>
+<p><strong>5件に満たない理由:</strong> 24時間以内と確認できた項目が少ないため、直前の日付付き項目で補っています。</p>
+</div>
+
+<p style="font-size:.8rem;color:#777">本ページは各出典の要約であり、投資・購入の助言ではありません。</p>
+</body>
+</html>
