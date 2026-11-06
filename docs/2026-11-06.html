@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIエージェント Daily Digest 2026-11-06</title>
+<style>
+body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.7;margin:0 auto;padding:16px;max-width:640px;color:#222;background:#fff}
+h1{font-size:1.4rem}h2{font-size:1.1rem;margin:0 0 .5em}
+article,.note{border:1px solid #ddd;border-radius:8px;padding:12px 14px;margin:16px 0}
+h3{font-size:.95rem;margin:.8em 0 .1em;color:#555}p{margin:.2em 0}
+a{color:#0b5fff;word-break:break-all}.tag{font-size:.8rem;color:#b00}
+@media(prefers-color-scheme:dark){body{background:#111;color:#eee}article,.note{border-color:#444}h3{color:#aaa}a{color:#7aa7ff}.tag{color:#ff8a8a}}
+</style>
+</head>
+<body>
+<p><a href="index.html">← 一覧へ</a></p>
+<h1>AIエージェント Daily Digest<br>2026-11-06</h1>
+<p>対象: 2026-11-05〜06(JST朝時点)の約24時間。公式ページで日付を確認できたものだけを掲載します。24時間を少し超えるものは日付を明記した「参考」です。</p>
+<article>
+<h2>1. Claude API: IP許可リスト(ベータ)</h2>
+<h3>何が起きたか</h3>
+<p>11/5付。組織の管理者が、APIへのアクセスをIPv4/IPv6アドレスまたはCIDR範囲で制限できる(組織あたり最大1,000件)。リスト外からのリクエストは拒否される。</p>
+<h3>なぜ役立つか</h3>
+<p>APIキーが漏れても使える場所を限定できる。エージェントを固定のサーバーやCIから動かしている組織は、送信元IPを絞る運用を検討できる。</p>
+<h3>出典</h3>
+<p><a href="https://platform.claude.com/docs/en/release-notes/overview">Claude Platform release notes(公式)</a></p>
+</article>
+<article>
+<h2>2. Claude Enterprise: メンバーの全面サインアウトAPI(ベータ)</h2>
+<h3>何が起きたか</h3>
+<p>11/5付。管理者が <code>POST /v1/organizations/users/{user_id}/sign_out</code> で、特定メンバーのセッション・信頼済みデバイス・OAuthトークンを組織単位で失効できる。ベータヘッダー <code>admin-user-sign-out-2026-10-08</code> が必要。メンバー自身は組織に残り、すぐ再ログインできる。</p>
+<h3>なぜ役立つか</h3>
+<p>退職や端末紛失時などに、Claude Codeを含む接続を一括で切る手順をAPIで自動化できる。</p>
+<h3>出典</h3>
+<p><a href="https://platform.claude.com/docs/en/release-notes/overview">Claude Platform release notes(公式)</a></p>
+</article>
+<article>
+<h2>3. 【参考・11/4】Claude Code 2.1.318</h2>
+<h3>何が起きたか</h3>
+<p>11/4リリース(24時間をやや超える)。バックグラウンドのサブエージェントは、3分を超えるシェルコマンドをバックグラウンドへ移すようになった。2.1.314で入った不具合(<code>--continue</code> で以前の会話が失われる場合がある)も修正された。ほかに <code>claude auth status</code> にサインイン期限が表示される。</p>
+<h3>なぜ役立つか</h3>
+<p>長時間コマンドを走らせるサブエージェントが詰まりにくくなる。<code>--continue</code> を使っていて会話が欠けた人は、更新で解消が見込める。</p>
+<h3>出典</h3>
+<p><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog(公式)</a></p>
+</article>
+<article>
+<h2>4. 【参考・11/3】Claude Code 2.1.317 とAgent SDKフック</h2>
+<h3>何が起きたか</h3>
+<p>11/3リリース(対象期間外)。Agent SDKのフックに <code>onFailure: "block"</code> が追加された。<code>/schedule</code> では、リクエストしていないコネクタが付く場合に警告が出る。Webやシェルツールがアカウントのメールアドレスを外部へ送る前に確認する仕組みも入った。</p>
+<h3>なぜ役立つか</h3>
+<p>SDKでフックを書く人は、失敗時に処理を止める安全側の挙動を選べる。定期実行タスクの意図しない権限付与にも気づきやすくなる。</p>
+<h3>出典</h3>
+<p><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog(公式)</a></p>
+</article>
+<article>
+<h2>5. 【参考・11/2】Message threads(ベータ)</h2>
+<h3>何が起きたか</h3>
+<p>11/2付(対象期間外)。サーバー側が会話を保持し、以降のリクエストでは新しいメッセージだけを送ればよくなる。ベータヘッダー <code>message-threads-2026-08-12</code> を使う。スレッドは最後のリクエストの5分後に失効し、最終利用から1時間以内に削除される。</p>
+<h3>なぜ役立つか</h3>
+<p>長い会話やエージェントループで、毎回履歴を送り直す手間と通信量を減らせる可能性がある。5分で失効する点は設計時に注意。</p>
+<h3>出典</h3>
+<p><a href="https://platform.claude.com/docs/en/release-notes/overview">Claude Platform release notes(公式)</a></p>
+</article>
+<div class="note">
+<h2>該当なし / 未確認の領域</h2>
+<p><strong>OpenAI:</strong> openai.com にこの環境から接続できず、24時間以内の発表は<strong>未確認</strong>です(該当なしではありません)。</p>
+<p><strong>Google:</strong> blog.google に接続できず<strong>未確認</strong>です。</p>
+<p><strong>MCP:</strong> 公式ブログの最新記事は2026-10-30付(Ruby SDKがTier 1に)で、24時間以内の新規投稿は<strong>該当なし</strong>。python-sdk のGitHubリリース最新は10月上旬(v2.3.0)で、期間内の新規は<strong>該当なし</strong>。他SDKは<strong>未確認</strong>。</p>
+<p><strong>Anthropicニュース:</strong> 最新は10/28付で、24時間以内の投稿は<strong>該当なし</strong>。</p>
+<p><strong>Agent SDK / OpenAI Agents SDK のリリース:</strong> 個別のGitHubリリースは<strong>未確認</strong>です。</p>
+</div>
+<p style="font-size:.8rem;color:#777">本ページは各出典の要約であり、投資・購入の助言ではありません。</p>
+</body>
+</html>
