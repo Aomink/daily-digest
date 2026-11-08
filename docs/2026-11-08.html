@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIエージェント Daily Digest 2026-11-08</title>
+<style>
+body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.7;margin:0 auto;padding:16px;max-width:640px;color:#222;background:#fff}
+h1{font-size:1.4rem}h2{font-size:1.1rem;margin:0 0 .5em}
+article,.note{border:1px solid #ddd;border-radius:8px;padding:12px 14px;margin:16px 0}
+h3{font-size:.95rem;margin:.8em 0 .1em;color:#555}p{margin:.2em 0}
+a{color:#0b5fff;word-break:break-all}.tag{font-size:.8rem;color:#b00}
+@media(prefers-color-scheme:dark){body{background:#111;color:#eee}article,.note{border-color:#444}h3{color:#aaa}a{color:#7aa7ff}.tag{color:#ff8a8a}}
+</style>
+</head>
+<body>
+<p><a href="index.html">← 一覧へ</a></p>
+<h1>AIエージェント Daily Digest<br>2026-11-08</h1>
+<p>対象: 2026-11-07〜08(JST朝9時時点)の約24時間。確認できた公式ページでは、この期間内の日付の項目は<strong>見つかりませんでした(該当なし)</strong>。以下は期間より前(11/2〜11/6)の項目で、参考として日付を明記して載せています。</p>
+<article>
+<h2>1. 【11/6・期間外】Claude Code 2.1.319</h2>
+<h3>何が起きたか</h3>
+<p>MCPタスクがターミナルでバックグラウンド実行され、完了すると結果がClaudeに通知されるようになった。待機させたい場合は環境変数 <code>CLAUDE_CODE_DISABLE_MCP_TASK_BACKGROUND</code> を使う。また、許可プロンプトで止まる代わりに拒否して処理を続ける <code>permissions.denyInsteadOfPrompting</code> 設定が追加された。</p>
+<h3>なぜ役立つか</h3>
+<p>無人で動かす自動化(定期実行など)で、承認待ちのまま固まるのを避けられる。長いMCP処理中も他の作業を進めやすい。</p>
+<h3>出典</h3>
+<p><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog(公式)</a></p>
+</article>
+<article>
+<h2>2. 【11/3・期間外】Claude Code 2.1.317 / Agent SDK hook</h2>
+<h3>何が起きたか</h3>
+<p>Agent SDKのフックコールバックに <code>onFailure: "block"</code> が追加され、コールバックが失敗したら該当の操作を止められる。ウェブ/シェル呼び出しでアカウントのメールアドレスを送信する前に確認する仕組みも入った。</p>
+<h3>なぜ役立つか</h3>
+<p>安全確認用のフックが落ちたときに素通りしてしまう事態を防げる(フェイルクローズ)。</p>
+<h3>出典</h3>
+<p><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog(公式)</a></p>
+</article>
+<article>
+<h2>3. 【11/2・期間外】Claude API「Message threads」(ベータ)</h2>
+<h3>何が起きたか</h3>
+<p>会話をサーバー側に保持し、以降のリクエストは新規メッセージだけ送れる。ベータヘッダ <code>message-threads-2026-08-12</code> で有効化。スレッドは最後のリクエストの5分後に失効し、最長1時間以内に削除される。</p>
+<h3>なぜ役立つか</h3>
+<p>長い会話やエージェントのループで、リクエストサイズと最初のトークンまでの時間を減らせる可能性がある。5分で失効する点は設計時に注意。</p>
+<h3>出典</h3>
+<p><a href="https://platform.claude.com/docs/en/release-notes/overview">Claude Platform release notes(公式)</a></p>
+</article>
+<article>
+<h2>4. 【11/5・期間外】Claude API の IP許可リスト(ベータ)</h2>
+<h3>何が起きたか</h3>
+<p>組織管理者がAPIアクセスを許可するIPアドレス/CIDR(組織あたり最大1,000件)に制限できる。リスト外からのリクエストは拒否される。</p>
+<h3>なぜ役立つか</h3>
+<p>APIキーが漏れても使える場所を限定でき、エージェントを動かす固定IPの環境がある組織では防御を一段足せる。</p>
+<h3>出典</h3>
+<p><a href="https://platform.claude.com/docs/en/release-notes/overview">Claude Platform release notes(公式)</a></p>
+</article>
+<div class="note">
+<h2>該当なし / 未確認の領域</h2>
+<p><strong>24時間以内(11/7〜8):</strong> 上記の公式ページ(Claude Code changelog、Claude Platform release notes、Anthropicニュース、MCPブログ)に該当日付の項目は<strong>該当なし</strong>。Anthropicニュースの最新は10/28付、MCPブログの最新は10/30付でした。</p>
+<p><strong>OpenAI Agents SDK(GitHub):</strong> 最新リリースは v0.24.0(10/15)とプレリリース v0.24.0-alpha.6(11/3、年は画面に表示なし)で、24時間以内のものは<strong>該当なし</strong>。<a href="https://github.com/openai/openai-agents-python/releases">リリース一覧</a></p>
+<p><strong>OpenAI / Google の公式ブログ・発表:</strong> 公式サイトは取得しておらず<strong>未確認</strong>です(該当なしではありません)。Web検索では日付を確認できる記事は見つかりませんでした。</p>
+</div>
+<p style="font-size:.8rem;color:#777">本ページは各出典の要約であり、投資・購入の助言ではありません。</p>
+</body>
+</html>
