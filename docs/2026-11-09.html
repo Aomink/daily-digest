@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIエージェント Daily Digest 2026-11-09</title>
+<style>
+body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.7;margin:0 auto;padding:16px;max-width:640px;color:#222;background:#fff}
+h1{font-size:1.4rem}h2{font-size:1.1rem;margin:0 0 .5em}
+article,.note{border:1px solid #ddd;border-radius:8px;padding:12px 14px;margin:16px 0}
+h3{font-size:.95rem;margin:.8em 0 .1em;color:#555}p{margin:.2em 0}
+a{color:#0b5fff;word-break:break-all}.tag{font-size:.8rem;color:#b00}
+@media(prefers-color-scheme:dark){body{background:#111;color:#eee}article,.note{border-color:#444}h3{color:#aaa}a{color:#7aa7ff}.tag{color:#ff8a8a}}
+</style>
+</head>
+<body>
+<p><a href="index.html">← 一覧へ</a></p>
+<h1>AIエージェント Daily Digest<br>2026-11-09</h1>
+<p>対象: 2026-11-08〜09(JST朝9時時点)の約24時間。公式ページで日付を確認できたものだけを掲載します。<strong>この期間に公式ページで日付を確認できた新規発表はありませんでした</strong>(無理に埋めていません)。</p>
+
+<div class="note">
+<h2>24時間以内: 該当なし</h2>
+<p><strong>Claude Platform リリースノート:</strong> 最新は11/5付。11/8〜9の新規エントリは<strong>該当なし</strong>(ただしページ後半は未読のため、完全な網羅は未確認)。</p>
+<p><strong>Claude Code changelog:</strong> 確認できた最新は 2.1.319(11/6付)。11/7以降の版は<strong>該当なし</strong>(ページ全体は未読)。</p>
+<p><strong>MCP公式ブログ:</strong> 最新は10/30付(Ruby SDK が Tier 1 に)。24時間以内は<strong>該当なし</strong>。</p>
+<p><strong>OpenAI:</strong> openai.com にこの環境から接続できず(ネットワーク許可外)、<strong>未確認</strong>です。該当なしではありません。</p>
+<p><strong>Google:</strong> 今回は公式サイトを確認しておらず<strong>未確認</strong>です。</p>
+<p><strong>Agent SDK / 各社SDKのGitHubリリース:</strong> <strong>未確認</strong>。</p>
+</div>
+
+<article>
+<h2>参考(対象期間外): 直近の公式更新</h2>
+<p class="tag">以下は24時間より前の更新です。前回ダイジェスト(10/31)以降の見落とし防止のための参考掲載です。</p>
+<h3>何が起きたか</h3>
+<p>Claude Code 2.1.319(11/6)で、MCPサーバーがタスクとして実行したツール呼び出しをバックグラウンドに回し、完了後にClaudeへ結果を返す動作が入った。ほかに、許可確認待ちになる呼び出しを拒否して処理を続ける設定 <code>permissions.denyInsteadOfPrompting</code> も追加された。</p>
+<p>Claude Platform では11/2に、会話をサーバー側で保持して以降は新しいメッセージだけ送れる「message threads」がベータで公開された(要ヘッダ)。11/5にはConsole組織向けのIP許可リスト(ベータ)も出ている。</p>
+<h3>なぜ役立つか</h3>
+<p>長時間のMCPツールを使うエージェントが待たされにくくなり、無人実行では確認待ちで止まる問題を避けやすい。message threads は長い会話のリクエスト量削減に使える可能性がある(詳細は公式を要確認)。</p>
+<h3>出典</h3>
+<p><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog(公式)</a><br><a href="https://platform.claude.com/docs/en/release-notes/overview">Claude Platform release notes(公式)</a></p>
+</article>
+
+<p style="font-size:.8rem;color:#777">本ページは各出典の要約であり、投資・購入の助言ではありません。</p>
+</body>
+</html>
