@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIエージェント Daily Digest 2026-11-10</title>
+<style>
+body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.7;margin:0 auto;padding:16px;max-width:640px;color:#222;background:#fff}
+h1{font-size:1.4rem}h2{font-size:1.1rem;margin:0 0 .5em}
+article,.note{border:1px solid #ddd;border-radius:8px;padding:12px 14px;margin:16px 0}
+h3{font-size:.95rem;margin:.8em 0 .1em;color:#555}p{margin:.2em 0}
+a{color:#0b5fff;word-break:break-all}.tag{font-size:.8rem;color:#b00}
+@media(prefers-color-scheme:dark){body{background:#111;color:#eee}article,.note{border-color:#444}h3{color:#aaa}a{color:#7aa7ff}.tag{color:#ff8a8a}}
+</style>
+</head>
+<body>
+<p><a href="index.html">← 一覧へ</a></p>
+<h1>AIエージェント Daily Digest<br>2026-11-10</h1>
+<p>対象: 2026-11-09〜10(JST朝9時時点)の約24時間。公式ページで日付を確認できたものだけを掲載し、確認できないものは「未確認」と明記しています。</p>
+
+<article>
+<h2>1. Claude Fable 5.2 / Mythos 5.2 が登場</h2>
+<h3>何が起きたか</h3>
+<p>11/9、<code>claude-fable-5-2</code> と <code>claude-mythos-5-2</code> が公開された。どちらも1Mトークンのコンテキストと最大128k出力、常時オンのadaptive thinkingを持つ。料金は入力$8・出力$40(/MTok)で、Fable 5.1より下がった。Mythos 5.2は、サイバー検証プログラムなどで確認済みの組織に限定される。30日保持が必須で、ZDR環境では原則使えない。</p>
+<h3>なぜ役立つか</h3>
+<p>エージェント用のモデルを選び直す材料になる。単価が下がったので、長時間タスクのコスト見積もりを更新できる。ZDR前提の環境では使えないため、導入前に要件の確認が必要。</p>
+<h3>出典</h3>
+<p><a href="https://platform.claude.com/docs/en/release-notes/overview">Claude Platform release notes(公式)</a><br><a href="https://www.anthropic.com/news">Anthropic Newsroom(公式・見出しのみ確認)</a><br></p>
+</article>
+<article>
+<h2>2. API側の破壊的変更: computer use のツールセットと thinking の検証</h2>
+<h3>何が起きたか</h3>
+<p>Fable 5.2 / Mythos 5.2 のcomputer useは新ツールセット <code>computer_toolset_20260801</code> が必須で、<code>computer_20251124</code> を宣言すると(Amazon Bedrock以外では)400エラーになる。また、system・tools・過去メッセージを書き換えたうえで後のターンのthinkingブロックを送り返すと、全アカウントで400になる(prefix check)。thinkingブロックは発行したアカウント(または連携アカウント)でしか使えない。</p>
+<h3>なぜ役立つか</h3>
+<p>ブラウザ操作系のエージェントや、履歴を加工して再送する自作ループは、移行時に落ちる可能性がある。事前にツール定義とコンテキスト編集の処理を確認しておくとよい。</p>
+<h3>出典</h3>
+<p><a href="https://platform.claude.com/docs/en/release-notes/overview">Claude Platform release notes(公式)</a><br></p>
+</article>
+<article>
+<h2>3. Fable 5.2 の fast mode とモデル切替・advisorの制約</h2>
+<h3>何が起きたか</h3>
+<p>Fable 5.2はClaude APIで <code>speed: "fast"</code> が使え、出力速度は最大2.5倍。料金は入力$16・出力$80(/MTok)。会話の途中でFable/Mythos 5.2に切り替えても他モデルの推論は引き継がれるが、戻すと5.2のthinkingは破棄される(リクエスト自体は成功)。advisorツール(ベータ)では、5.2系のexecutorのadvisorは5.2系のみ。</p>
+<h3>なぜ役立つか</h3>
+<p>待ち時間が問題になる対話型エージェントでは、コストと速度のトレードオフを選べる。マルチモデル構成やadvisor利用時の組み合わせ制約も把握できる。</p>
+<h3>出典</h3>
+<p><a href="https://platform.claude.com/docs/en/release-notes/overview">Claude Platform release notes(公式)</a><br></p>
+</article>
+<article>
+<h2>4. Claude Code 2.1.321: Fable 5.2 が既定に、mods まわりの権限変更</h2>
+<h3>何が起きたか</h3>
+<p>11/9リリース。Fable 5.2が既定のFableモデルになった(1M、$8/$40)。保存済みのFable 5.1選択は <code>fable</code> に移る(戻すには <code>/model claude-fable-5-1</code>)。<code>claude remote-control --settings &lt;file&gt;</code> で、起動する全セッションに設定ファイルを適用できる。Claudeが書いたmodsは、autoやbypassモードでは確認なしに有効化されなくなり、dontAskモードでは読み込まれない。fast modeは、モデルを切り替える前に同じモデルの標準速度へ戻る。</p>
+<h3>なぜ役立つか</h3>
+<p>モデルの既定値が変わるため、再現性が必要なCIでは明示的にモデルを固定したい。リモート運用では設定ファイルを一括適用でき、管理が楽になる。</p>
+<h3>出典</h3>
+<p><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog(公式)</a><br></p>
+</article>
+<article>
+<h2>5. Claude Code 2.1.321: MCP OAuthの情報漏えい対策</h2>
+<h3>何が起きたか</h3>
+<p>MCPサーバーがリクエストを別ホストへリダイレクトした際、リフレッシュトークンなどの秘密情報が転送先に送られてしまう問題が修正された。</p>
+<h3>なぜ役立つか</h3>
+<p>外部のMCPサーバーを認証付きで使っている場合に関係する。2.1.321以降へ更新しておくと安心。影響範囲の詳細は公式記載の範囲を超えては未確認。</p>
+<h3>出典</h3>
+<p><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog(公式)</a><br></p>
+</article>
+
+<div class="note">
+<h2>該当なし / 未確認の領域</h2>
+<p><strong>OpenAI:</strong> openai.com にこの環境から接続できず、24時間以内の発表は<strong>未確認</strong>です(該当なしではありません)。</p>
+<p><strong>Google:</strong> blog.google に接続できず<strong>未確認</strong>です。検索でも11/9付の該当記事は確認できませんでした。</p>
+<p><strong>MCP:</strong> 公式ブログの最新は10/30付で、24時間以内の新規投稿は<strong>該当なし</strong>。各SDKのGitHubリリースは<strong>未確認</strong>です。</p>
+<p><strong>Agent SDK / OpenAI Agents SDK:</strong> GitHubのリリース情報は確認しておらず<strong>未確認</strong>です。</p>
+<p><strong>Anthropic Newsroom:</strong> 24時間以内はFable 5.2 / Mythos 5.2の記事のみ(個別記事ページは404で本文<strong>未確認</strong>。内容はリリースノートに基づく)。</p>
+</div>
+
+<p style="font-size:.8rem;color:#777">本ページは各出典の要約であり、投資・購入の助言ではありません。</p>
+</body>
+</html>
