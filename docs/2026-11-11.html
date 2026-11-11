@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIエージェント Daily Digest 2026-11-11</title>
+<style>
+body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.7;margin:0 auto;padding:16px;max-width:640px;color:#222;background:#fff}
+h1{font-size:1.4rem}h2{font-size:1.1rem;margin:0 0 .5em}
+article,.note{border:1px solid #ddd;border-radius:8px;padding:12px 14px;margin:16px 0}
+h3{font-size:.95rem;margin:.8em 0 .1em;color:#555}p{margin:.2em 0}
+a{color:#0b5fff;word-break:break-all}.tag{font-size:.8rem;color:#b00}
+@media(prefers-color-scheme:dark){body{background:#111;color:#eee}article,.note{border-color:#444}h3{color:#aaa}a{color:#7aa7ff}.tag{color:#ff8a8a}}
+</style>
+</head>
+<body>
+<p><a href="index.html">← 一覧へ</a></p>
+<h1>AIエージェント Daily Digest<br>2026-11-11</h1>
+<p>対象: 2026-11-10〜11(JST朝9時時点)の約24時間。公式ページで日付を確認できたものだけを掲載し、確認できないものは「未確認」と明記しています。公式の日付は米国時間表記の可能性があり、日本時間では前日末〜当日にかかるものを含みます。該当は少なめです。</p>
+
+<article>
+<h2>1. Claude Fable 5.2 / Mythos 5.2 が公開(API・Claude Code対応)</h2>
+<h3>何が起きたか</h3>
+<p>11/9付で <code>claude-fable-5-2</code> と <code>claude-mythos-5-2</code> が登場。いずれも100万トークン文脈、最大出力128k、常時有効の適応型思考。Fable 5.2 は fast mode(<code>speed: "fast"</code>)も使える。Mythos 5.2 は Anthropic の審査を通った組織向けに限定。両モデルは30日のデータ保持が前提で、ZDRでは原則使えない。</p>
+<h3>なぜ役立つか</h3>
+<p>エージェント用途で長い文脈を扱う場合のモデル選択肢が増える。データ保持の条件があるため、ZDR運用の環境では導入前に確認が必要。</p>
+<h3>出典</h3>
+<p><a href="https://platform.claude.com/docs/en/release-notes/overview">Claude Platform release notes(公式)</a><br><a href="https://www.anthropic.com/news">Anthropic News(公式・投稿一覧)</a></p>
+</article>
+
+<article>
+<h2>2. Claude API の破壊的変更:thinking の再送チェックとcomputer useツール</h2>
+<h3>何が起きたか</h3>
+<p>同じく11/9付のリリースノートに2点。(a) 「prefix check」が全アカウントで強制され、<code>system</code>・<code>tools</code>・過去メッセージを編集したうえでthinkingブロックを再送すると400エラーになる。(b) computer use は <code>computer_toolset_20260801</code> が必須になり、旧 <code>computer_20251124</code> は(Amazon Bedrock以外で)400エラーになる。</p>
+<h3>なぜ役立つか</h3>
+<p>履歴を加工して再送するエージェントや、computer useを使う自動化は突然失敗する可能性がある。コードの該当箇所を早めに確認したい。</p>
+<h3>出典</h3>
+<p><a href="https://platform.claude.com/docs/en/release-notes/overview">Claude Platform release notes(公式)</a></p>
+</article>
+
+<article>
+<h2>3. Claude Code 2.1.321 / 2.1.322</h2>
+<h3>何が起きたか</h3>
+<p>2.1.322(11/10): Vertex 上で fast mode がglobal・US・EUリージョンで使えるようになり、拒否された場合は通常速度にフォールバックする。2.1.321(11/9): Fable 5.2 が既定のFableモデルになり(1M文脈)、<code>claude remote-control</code> に <code>--settings &lt;file&gt;</code> を追加。自動・bypassモードでは、Claudeが書いたmodが確認なしで有効化されなくなった。</p>
+<h3>なぜ役立つか</h3>
+<p>Vertex経由で使っている場合は速度面の選択肢が増える。自動実行の運用では、mod有効化に確認が入る点が安全面で効く。</p>
+<h3>出典</h3>
+<p><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog(公式)</a></p>
+</article>
+
+<div class="note">
+<h2>該当なし / 未確認の領域</h2>
+<p><strong>OpenAI:</strong> openai.com にこの環境から接続できず、24時間以内の発表は<strong>未確認</strong>です(該当なしではありません)。検索では11/10前後の日付が確認できる記事は見つかりませんでした。</p>
+<p><strong>Google:</strong> 公式ブログには接続しておらず<strong>未確認</strong>。GitHub上の adk-python の最新リリースは v2.14.0(11/7)で、対象期間外です。</p>
+<p><strong>MCP:</strong> 公式ブログの最新は10/30付で、24時間以内の新規投稿は<strong>該当なし</strong>。各SDKのリリースは<strong>未確認</strong>です。</p>
+<p><strong>Anthropicニュース:</strong> 11/10付の投稿(IPOロードショー関連)はエージェントとは無関係のため掲載していません。</p>
+<p><strong>Agent SDK / OpenAI Agents SDK:</strong> リリース情報は<strong>未確認</strong>です。</p>
+</div>
+
+<p style="font-size:.8rem;color:#777">本ページは各出典の要約であり、投資・購入の助言ではありません。</p>
+</body>
+</html>
