@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIエージェント Daily Digest 2026-11-12</title>
+<style>
+body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.7;margin:0 auto;padding:16px;max-width:640px;color:#222;background:#fff}
+h1{font-size:1.4rem}h2{font-size:1.1rem;margin:0 0 .5em}
+article,.note{border:1px solid #ddd;border-radius:8px;padding:12px 14px;margin:16px 0}
+h3{font-size:.95rem;margin:.8em 0 .1em;color:#555}p{margin:.2em 0}
+a{color:#0b5fff;word-break:break-all}.tag{font-size:.8rem;color:#b00}
+@media(prefers-color-scheme:dark){body{background:#111;color:#eee}article,.note{border-color:#444}h3{color:#aaa}a{color:#7aa7ff}.tag{color:#ff8a8a}}
+</style>
+</head>
+<body>
+<p><a href="index.html">← 一覧へ</a></p>
+<h1>AIエージェント Daily Digest<br>2026-11-12</h1>
+<p>対象: 2026-11-11〜12(JST朝9時時点)の約24時間。公式ページに記載された日付で確認できたものだけを掲載しています。<strong>24時間以内(11/11付)に確認できたのはMCPの1件のみ</strong>で、残りは1〜3日前の公式発表を「期間外・参考」として明示して載せています。</p>
+
+<article>
+<h2>1. MCP の仕様リリースが半年周期に(11/11付)</h2>
+<h3>何が起きたか</h3>
+<p>MCP公式ブログが、仕様のリリースを半年ごと(原則3月と9月の最終火曜)の定期サイクルにすると発表。次回は2027-03-30版を目標とし、間に合わない提案は次のリリースへ回す方針。Luca Chang氏がリリースマネージャーに加わる。</p>
+<h3>なぜ役立つか</h3>
+<p>MCPサーバー/クライアントを自作・運用している場合、仕様変更の時期を見越して対応を計画しやすくなる。</p>
+<h3>出典</h3>
+<p><a href="https://blog.modelcontextprotocol.io/posts/mcp-release-cycle/">A More Predictable Release Cycle for MCP(公式ブログ)</a><br></p>
+</article>
+
+<article>
+<h2>2. 【期間外・11/10付】MCPにファイル受け渡し拡張の草案</h2>
+<h3>何が起きたか</h3>
+<p>MCPのワーキンググループが、クライアントとツール間でファイルを直接やり取りする任意拡張 <code>io.modelcontextprotocol/files</code> を提案。モデルがファイル内容を扱わずに済む設計で、アップロードは <code>upload_required</code> 結果で起動する。実験段階で参照実装はまだなく、年内の安定化を目指すとのこと。</p>
+<h3>なぜ役立つか</h3>
+<p>大きなファイルをトークンに載せずにエージェントへ渡せる可能性がある。仕様はまだ流動的なので、試す場合はドラフトとして扱う。</p>
+<h3>出典</h3>
+<p><a href="https://blog.modelcontextprotocol.io/posts/exploring-file-uploads-and-downloads-in-mcp/">Exploring File Uploads and Downloads in MCP(公式ブログ)</a><br></p>
+</article>
+
+<article>
+<h2>3. 【期間外・11/9〜10付】Claude Code 2.1.321 / 2.1.322</h2>
+<h3>何が起きたか</h3>
+<p>2.1.321(11/9)で Claude Fable 5.2 が既定のFableモデルになり、<code>claude remote-control</code> に <code>--settings</code> が追加、MCP OAuthでリダイレクト後に別ホストへ秘密情報が送られる不具合を含む74件を修正。2.1.322(11/10)ではVertexでのfast modeが追加された。</p>
+<h3>なぜ役立つか</h3>
+<p>MCPのOAuth接続を使っている場合は更新の優先度が高い。Remote Controlで複数セッションに同じ設定を配れる点も運用向き。</p>
+<h3>出典</h3>
+<p><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog(公式)</a><br></p>
+</article>
+
+<article>
+<h2>4. 【期間外・11/9付】Claude Fable 5.2 / Mythos 5.2 とAPI側の変更点</h2>
+<h3>何が起きたか</h3>
+<p>Claude Platformのリリースノートによると、11/9に <code>claude-fable-5-2</code> と、認証済み組織限定の <code>claude-mythos-5-2</code> が公開。1Mトークン文脈、価格は入力$8/出力$40(MTokあたり)。同時にcomputer useには新しい <code>computer_toolset_20260801</code> が必要になり、preserved thinkingのルールも厳格化された。</p>
+<h3>なぜ役立つか</h3>
+<p>computer useを使うエージェントは、ツールセット指定の更新が必要になる。長時間エージェント用途で新モデルを検討する際の前提情報になる。(価格は事実の記載のみで、購入の助言ではありません。)</p>
+<h3>出典</h3>
+<p><a href="https://platform.claude.com/docs/en/release-notes/overview">Claude Platform release notes(公式)</a><br><a href="https://www.anthropic.com/news">Introducing Claude Fable 5.2 and Claude Mythos 5.2(Anthropic、タイトルのみ確認)</a><br></p>
+</article>
+
+<div class="note">
+<h2>該当なし / 未確認の領域</h2>
+<p><strong>OpenAI:</strong> openai.com にこの環境から接続できず、24時間以内の発表は<strong>未確認</strong>です(該当なしではありません)。</p>
+<p><strong>Google:</strong> blog.google に接続できず<strong>未確認</strong>です。</p>
+<p><strong>Anthropicニュース:</strong> 11/11以降の新規投稿は<strong>該当なし</strong>(最新は11/10の資金調達関連で、エージェント関連ではないため除外)。</p>
+<p><strong>Claude Code:</strong> 11/11以降の新規リリースは変更履歴の先頭部分(2.1.322まで)では<strong>該当なし</strong>。ただし変更履歴は全文を読めていません。</p>
+<p><strong>Agent SDK / OpenAI Agents SDK / 各MCP SDK:</strong> GitHubリリースは確認しておらず<strong>未確認</strong>です。</p>
+</div>
+
+<p style="font-size:.8rem;color:#777">本ページは各出典の要約であり、投資・購入の助言ではありません。</p>
+</body>
+</html>
