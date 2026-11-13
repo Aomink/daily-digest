@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIエージェント Daily Digest 2026-11-13</title>
+<style>
+body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.7;margin:0 auto;padding:16px;max-width:640px;color:#222;background:#fff}
+h1{font-size:1.4rem}h2{font-size:1.1rem;margin:0 0 .5em}
+article,.note{border:1px solid #ddd;border-radius:8px;padding:12px 14px;margin:16px 0}
+h3{font-size:.95rem;margin:.8em 0 .1em;color:#555}p{margin:.2em 0}
+a{color:#0b5fff;word-break:break-all}.tag{font-size:.8rem;color:#b00}
+@media(prefers-color-scheme:dark){body{background:#111;color:#eee}article,.note{border-color:#444}h3{color:#aaa}a{color:#7aa7ff}.tag{color:#ff8a8a}}
+</style>
+</head>
+<body>
+<p><a href="index.html">← 一覧へ</a></p>
+<h1>AIエージェント Daily Digest<br>2026-11-13</h1>
+<p>対象: 2026-11-12〜13(JST朝時点)の約24時間。24時間以内と確認できたのは1件のみです。残りは日付が1〜4日前のもので、各項目に日付を明記しています(参考枠)。</p>
+<article>
+<h2>1. Claude Managed Agents をセルフホストできるように</h2>
+<p class="tag">日付: 2026-11-12(24時間以内)</p>
+<h3>何が起きたか</h3>
+<p>11/12付のリリースノートによると、Managed Agents のサービス全体を自社インフラで動かし、エージェント・セッション・履歴も自社側に保存できる。モデルへのリクエスト先は選べ、既定はAnthropic。利用にはAnthropicの担当チームへの連絡が必要。</p>
+<h3>なぜ役立つか</h3>
+<p>データの保管場所に制約がある組織でも、マネージド型のエージェント基盤を検討しやすくなる。ただし提供条件は個別相談なので、詳細は未確認。</p>
+<h3>出典</h3>
+<p><a href="https://platform.claude.com/docs/en/release-notes/overview">Claude Platform release notes(公式)</a></p>
+</article>
+<article>
+<h2>2. MCP: リリースサイクルを予測しやすくする方針</h2>
+<p class="tag">日付: 2026-11-11(24時間よりやや前)</p>
+<h3>何が起きたか</h3>
+<p>11/11付のMCP公式ブログで、新しいリリースプロセスと、リリースマネージャーとしてLuca Chang氏が加わったことが紹介された。具体的な日程や手順の中身は本文未確認。</p>
+<h3>なぜ役立つか</h3>
+<p>仕様の更新時期が読みやすくなれば、MCPサーバー/クライアントの対応計画を立てやすくなる。</p>
+<h3>出典</h3>
+<p><a href="https://blog.modelcontextprotocol.io/">MCP公式ブログ</a></p>
+</article>
+<article>
+<h2>3. MCP: ファイルのアップロード/ダウンロード拡張を検討</h2>
+<p class="tag">日付: 2026-11-10(参考)</p>
+<h3>何が起きたか</h3>
+<p>11/10付のブログで、クライアントとツール間でファイルをやり取りするための初期段階の拡張が紹介された。まだ探索段階とのこと。詳細は本文未確認。</p>
+<h3>なぜ役立つか</h3>
+<p>画像や文書などをツールに渡す処理は現状ツールごとに作り込みが必要になりがちで、標準化されれば連携が楽になる可能性がある。</p>
+<h3>出典</h3>
+<p><a href="https://blog.modelcontextprotocol.io/">MCP公式ブログ</a></p>
+</article>
+<article>
+<h2>4. Claude Code 2.1.319〜2.1.322 の更新</h2>
+<p class="tag">日付: 2026-11-06〜11-10(参考)</p>
+<h3>何が起きたか</h3>
+<p>11/6〜11/10にかけて更新。MCPのタスク実行をターミナルでバックグラウンド化(完了時に報告)、確認待ちの呼び出しを自動拒否して処理を続ける <code>permissions.denyInsteadOfPrompting</code>、<code>claude remote-control</code> への <code>--settings</code> 追加、Vertexでのfast mode対応など。MCP OAuthリダイレクトでの秘密情報漏えい修正も含まれる。</p>
+<h3>なぜ役立つか</h3>
+<p>無人実行や長時間のMCPツール呼び出しを扱う運用で使える設定が増えた。2.1.321の修正は、MCPのOAuthを使っている場合は早めの更新が望ましい。</p>
+<h3>出典</h3>
+<p><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog(公式)</a></p>
+</article>
+<article>
+<h2>5. Claude Fable 5.2 / Mythos 5.2 が公開</h2>
+<p class="tag">日付: 2026-11-09(参考)</p>
+<h3>何が起きたか</h3>
+<p>11/9付。<code>claude-fable-5-2</code> は一般提供、<code>claude-mythos-5-2</code> は認証済み組織に限定。1Mトークン文脈、入力$8/出力$40(百万トークン当たり)。旧computer useツールは400エラーになるなど、移行時の注意点も多い。Claude Code 2.1.321で既定のFableモデルになった。</p>
+<h3>なぜ役立つか</h3>
+<p>エージェント用途のモデル選定・移行の判断材料になる。特に思考ブロックの再送や旧computer useツールを使うコードは影響を受けるので要確認。</p>
+<h3>出典</h3>
+<p><a href="https://platform.claude.com/docs/en/release-notes/overview">Claude Platform release notes(公式)</a></p>
+</article>
+<div class="note">
+<h2>該当なし / 未確認の領域</h2>
+<p><strong>OpenAI:</strong> openai.com にこの環境から接続できず(ネットワーク許可外)、発表は<strong>未確認</strong>です。該当なしではありません。</p>
+<p><strong>Google:</strong> blog.google に接続できず<strong>未確認</strong>です。</p>
+<p><strong>Claude Code:</strong> 最新リリースは11/10付の2.1.322で、24時間以内の新規リリースは<strong>該当なし</strong>(確認範囲は変更履歴の先頭部分)。</p>
+<p><strong>各SDKのGitHubリリース、Agent SDK:</strong> 今回は確認しておらず<strong>未確認</strong>です。</p>
+</div>
+
+<p style="font-size:.8rem;color:#777">本ページは各出典の要約であり、投資・購入の助言ではありません。</p>
+</body>
+</html>
