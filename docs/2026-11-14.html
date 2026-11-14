@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIエージェント Daily Digest 2026-11-14</title>
+<style>
+body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.7;margin:0 auto;padding:16px;max-width:640px;color:#222;background:#fff}
+h1{font-size:1.4rem}h2{font-size:1.1rem;margin:0 0 .5em}
+article,.note{border:1px solid #ddd;border-radius:8px;padding:12px 14px;margin:16px 0}
+h3{font-size:.95rem;margin:.8em 0 .1em;color:#555}p{margin:.2em 0}
+a{color:#0b5fff;word-break:break-all}.tag{font-size:.8rem;color:#b00}
+@media(prefers-color-scheme:dark){body{background:#111;color:#eee}article,.note{border-color:#444}h3{color:#aaa}a{color:#7aa7ff}.tag{color:#ff8a8a}}
+</style>
+</head>
+<body>
+<p><a href="index.html">← 一覧へ</a></p>
+<h1>AIエージェント Daily Digest<br>2026-11-14</h1>
+<p>対象: 2026-11-13〜14(JST朝9時時点)の約24時間。公式ページで日付を確認できたものだけを掲載し、確認できないものは「未確認」と明記しています。該当は少なめです。</p>
+
+<article>
+<h2>1. Claude Code 2.1.325: サンドボックス内Bashの権限と、gitの扱いが変更</h2>
+<h3>何が起きたか</h3>
+<p>11/13リリース(公式changelog記載)。サンドボックス内で実行するBashコマンドも通常の権限確認フローに従うのが既定になった。従来どおり確認なしで動かすには <code>sandbox.autoAllowBashIfSandboxed: true</code> を設定する。また、信頼していないリポジトリでは読み取り専用のgitコマンドでも事前確認が入り、worktreeのセッションでは <code>git bisect run</code> などが拒否される。VS Code拡張にはプロンプト候補(Tabで採用)なども加わった。</p>
+<h3>なぜ役立つか</h3>
+<p>無人実行やCIでClaude Codeを使っている場合、更新後に確認待ちで止まる可能性がある。上記設定の有無を事前に見直しておくと安全に移行できる。</p>
+<h3>出典</h3>
+<p><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog(公式)</a></p>
+</article>
+
+<div class="note">
+<h2>参考: 24時間よりやや前の動き(公式で確認)</h2>
+<p><strong>Claude Code 2.1.323(11/12):</strong> Claudeが自分のツールをJavaScriptで呼び出す実験的な「Code Mode」(オプトイン)と、plugin.jsonの <code>engines["claude-code"]</code> による対応バージョン指定が追加。出典: <a href="https://code.claude.com/docs/en/changelog">Claude Code changelog(公式)</a></p>
+<p><strong>Self-hosted Claude Managed Agents(11/12):</strong> Managed Agentsのサービス全体を自社インフラで動かせる形態が開始。利用はAnthropicの担当窓口への連絡が必要とされている。出典: <a href="https://platform.claude.com/docs/en/release-notes/overview">Claude Platform release notes(公式)</a></p>
+<p><strong>MCP公式ブログ(11/10・11/11):</strong> 「ファイルのアップロード/ダウンロード」の検討記事と、リリースサイクルを予測しやすくする方針の記事。出典: <a href="https://blog.modelcontextprotocol.io/">MCP Blog(公式)</a>(本文は未読で、見出しと日付のみ確認)</p>
+</div>
+
+<div class="note">
+<h2>該当なし / 未確認の領域</h2>
+<p><strong>OpenAI:</strong> openai.com にこの環境から接続できず、24時間以内の発表は<strong>未確認</strong>です(該当なしではありません)。</p>
+<p><strong>Google:</strong> blog.google に接続できず<strong>未確認</strong>です。</p>
+<p><strong>MCP:</strong> 公式ブログの24時間以内の新規投稿は<strong>該当なし</strong>(最新は11/11付)。各SDKのGitHubリリースは<strong>未確認</strong>です。</p>
+<p><strong>Claude API:</strong> リリースノートの最新は11/12付で、24時間以内の新規項目は<strong>該当なし</strong>。</p>
+<p><strong>Agent SDK / OpenAI Agents SDK、新ツール・事例:</strong> 日付を公式に確認できるものがなく<strong>未確認</strong>です。</p>
+</div>
+
+<p style="font-size:.8rem;color:#777">本ページは各出典の要約であり、投資・購入の助言ではありません。</p>
+</body>
+</html>
