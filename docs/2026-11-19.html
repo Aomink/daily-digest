@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIエージェント Daily Digest 2026-11-19</title>
+<style>
+body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.7;margin:0 auto;padding:16px;max-width:640px;color:#222;background:#fff}
+h1{font-size:1.4rem}h2{font-size:1.1rem;margin:0 0 .5em}
+article,.note{border:1px solid #ddd;border-radius:8px;padding:12px 14px;margin:16px 0}
+h3{font-size:.95rem;margin:.8em 0 .1em;color:#555}p{margin:.2em 0}
+a{color:#0b5fff;word-break:break-all}.tag{font-size:.8rem;color:#b00}
+@media(prefers-color-scheme:dark){body{background:#111;color:#eee}article,.note{border-color:#444}h3{color:#aaa}a{color:#7aa7ff}.tag{color:#ff8a8a}}
+</style>
+</head>
+<body>
+<p><a href="index.html">← 一覧へ</a></p>
+<h1>AIエージェント Daily Digest<br>2026-11-19</h1>
+<p>対象: 2026-11-18〜19(JST朝9時時点)の約24時間。公式ページ等で確認できたものだけを掲載し、確認できないものは「未確認」と明記しています。該当は少なめです。</p>
+
+<article>
+<h2>1. OpenAI Agents SDK(Python)v0.25.0</h2>
+<h3>何が起きたか</h3>
+<p>11/18付のリリース。ベータのRunloopサンドボックス提供が削除され、Pydanticの実行コンテキストの保存方式変更に伴い RunState のスキーマが 1.22 になった。コンパクション用セッションの既定モデルも変更され、ハンドオフ失敗時の復旧を <code>failure_error_function</code> で任意に有効化できる。MCP v2 の Streamable HTTP は同時リクエストに対応した。</p>
+<h3>なぜ役立つか</h3>
+<p>Runloopを使っている場合は事前のデータ移行が必要。保存済みの RunState を再開する運用では、スキーマ変更の影響確認が要る。ハンドオフの失敗を扱いやすくなり、MCPの並列呼び出しも改善する。</p>
+<h3>出典</h3>
+<p><a href="https://github.com/openai/openai-agents-python/releases">openai-agents-python Releases(GitHub)</a></p>
+</article>
+
+<article>
+<h2>2. Claude Agent SDK(Python)v0.2.184</h2>
+<h3>何が起きたか</h3>
+<p>11/18付で v0.2.184 が公開された。取得できたページにはリリースノート本文がなく、変更内容は<strong>未確認</strong>。</p>
+<h3>なぜ役立つか</h3>
+<p>SDKを固定バージョンで使っている場合、更新の有無だけは把握できる。内容は出典のリリースページで確認してから更新を判断してほしい。</p>
+<h3>出典</h3>
+<p><a href="https://github.com/anthropics/claude-agent-sdk-python/releases">claude-agent-sdk-python Releases(GitHub)</a></p>
+</article>
+
+<article>
+<h2>3. Claude Code 2.1.327(期間の境界)</h2>
+<h3>何が起きたか</h3>
+<p>リリース一覧の表示は「17 Nov 23:17」(タイムゾーンは<strong>未確認</strong>で、JSTの24時間窓の直前または境界)。<code>/install-github-app</code> がリポジトリを変更する前に確認を出す。<code>claude mcp add-json &lt;name&gt; -</code> でサーバー設定を標準入力から渡せる。<code>/status</code> が壊れたagent/skill/hook設定を表示する。project スコープの <code>claude mcp add/remove</code> が <code>.mcp.json</code> の他のキーを消す不具合も修正された。</p>
+<h3>なぜ役立つか</h3>
+<p>MCPのトークンをコマンドラインに残さず登録でき、チームの <code>.mcp.json</code> が壊れにくくなる。設定ミスの発見も楽になる。</p>
+<h3>出典</h3>
+<p><a href="https://github.com/anthropics/claude-code/releases">claude-code Releases(GitHub)</a> / <a href="https://code.claude.com/docs/en/changelog">Claude Code changelog(公式)</a></p>
+</article>
+
+<div class="note">
+<h2>該当なし / 未確認の領域</h2>
+<p><strong>OpenAI(公式発表):</strong> openai.com にこの環境から接続できず<strong>未確認</strong>です(該当なしではありません)。</p>
+<p><strong>Google:</strong> blog.google に接続できず<strong>未確認</strong>です。</p>
+<p><strong>MCP公式ブログ:</strong> 最新は11/11付で、24時間以内の新規投稿は<strong>該当なし</strong>。</p>
+<p><strong>Claude Platform release notes:</strong> 最新は11/17付(Linked billing ベータ)で、期間内の新規エントリは<strong>該当なし</strong>(ページ後半は未読)。</p>
+<p><strong>Anthropicニュース:</strong> 11/18付はIPOの価格決定のみで、エージェント関連ではないため掲載していません。</p>
+</div>
+
+<p style="font-size:.8rem;color:#777">本ページは各出典の要約であり、投資・購入の助言ではありません。</p>
+</body>
+</html>
