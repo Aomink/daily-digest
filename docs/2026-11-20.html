@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIエージェント Daily Digest 2026-11-20</title>
+<style>
+body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.7;margin:0 auto;padding:16px;max-width:640px;color:#222;background:#fff}
+h1{font-size:1.4rem}h2{font-size:1.1rem;margin:0 0 .5em}
+article,.note{border:1px solid #ddd;border-radius:8px;padding:12px 14px;margin:16px 0}
+h3{font-size:.95rem;margin:.8em 0 .1em;color:#555}p{margin:.2em 0}
+a{color:#0b5fff;word-break:break-all}.tag{font-size:.8rem;color:#b00}
+@media(prefers-color-scheme:dark){body{background:#111;color:#eee}article,.note{border-color:#444}h3{color:#aaa}a{color:#7aa7ff}.tag{color:#ff8a8a}}
+</style>
+</head>
+<body>
+<p><a href="index.html">← 一覧へ</a></p>
+<h1>AIエージェント Daily Digest<br>2026-11-20</h1>
+<p>対象: 2026-11-19〜20(JST朝9時時点)の約24時間。公式のチェンジログやリリースページで日付を確認できたものだけを掲載し、確認できないものは「未確認」と明記しています。該当は少なめです。</p>
+
+<article>
+<h2>1. Claude Code 2.1.328:Bedrock等でも auto mode、MCPフックの失敗ブロック</h2>
+<h3>何が起きたか</h3>
+<p>11/19付。Claude Opus 4.6 / Sonnet 4.6 の auto mode が、Amazon Bedrock、Google Cloud の Agent Platform、Microsoft Foundry、Claude apps gateway で使えるようになった。権限モード未設定の対話セッションは auto mode で始まる。<code>mcp_tool</code> フックでも <code>"onFailure": "block"</code> が使える。<code>/code-review</code> は多くのモデルでバグと CLAUDE.md 違反のみを報告し、指摘は Important / Pre-existing / Nit に分類される。</p>
+<h3>なぜ役立つか</h3>
+<p>クラウド経由でClaude Codeを使う組織でも、承認待ちの少ない運用が選べる。ただしデフォルトが変わるため、権限運用の見直しが要る。MCPフックが失敗時に処理を止められるので、ガードレール用途で確実性が上がる。</p>
+<h3>出典</h3>
+<p><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog(公式)</a></p>
+</article>
+
+<article>
+<h2>2. Claude Code 2.1.329:/tasks でスケジュール実行や fork を管理</h2>
+<h3>何が起きたか</h3>
+<p>11/19付。<code>/tasks</code> に、そのセッションのスケジュールタスク、<code>/loop</code> の再開予定、fork が一覧表示され、<code>x</code> キーで確認後に停止できる。信頼ダイアログは、フォルダ内のフックがどこで宣言されているかを警告する。macOSのcomputer useは新しい安全ルールに従い、一部操作の拒否や一部アプリへのアクセス縮小がある。以前のバージョンで保存したスケジュールタスクは、多くの場合、新しいサインイン済みセッションで再設定が必要。</p>
+<h3>なぜ役立つか</h3>
+<p>定期実行を使っている場合、更新後に動かなくなる可能性があるため、再設定の確認が必要。一覧と停止操作ができ、動いているものの把握もしやすくなる。リポジトリ内フックの出どころが見えるのは、他人のリポジトリを開く際の安全確認に有用。</p>
+<h3>出典</h3>
+<p><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog(公式)</a></p>
+</article>
+
+<article>
+<h2>3. OpenAI Agents SDK(Python)v0.25.0(期間の境界。11/18付)</h2>
+<h3>何が起きたか</h3>
+<p>11/18付のリリースで、時刻まで確認できていないため、24時間の外側の可能性がある。beta の Runloop サンドボックスプロバイダが削除された(利用者はワークスペースのデータを退避する必要がある)。RunState がスキーマ1.22になり、ネストしたエージェントツールの承認を出力ガードレール付きで再開できる。<code>OpenAIResponsesCompactionSession</code> の既定モデルが <code>gpt-6-luna</code> になった(<code>model="gpt-4.1"</code> で従来に戻せる)。ハンドオフのエラー回復用に opt-in の <code>failure_error_function</code> が加わり、MCP v2 の Streamable HTTP は同時リクエストを扱える。</p>
+<h3>なぜ役立つか</h3>
+<p>Runloopを使っている場合は移行が必要。既定モデルの変更は挙動やコストに影響しうるので、固定したい場合は明示指定しておくとよい。</p>
+<h3>出典</h3>
+<p><a href="https://github.com/openai/openai-agents-python/releases">openai-agents-python Releases(GitHub)</a></p>
+</article>
+
+<div class="note">
+<h2>該当なし / 未確認の領域</h2>
+<p><strong>OpenAI(公式サイト):</strong> openai.com にこの環境から接続できず、24時間以内の発表は<strong>未確認</strong>です(該当なしではありません)。上記はGitHubのリリースページのみ確認しました。</p>
+<p><strong>Google:</strong> 公式ページには直接アクセスしておらず<strong>未確認</strong>です。検索では11月分の発表を見つけられませんでした。</p>
+<p><strong>MCP:</strong> 公式ブログのトップから、11月にファイル転送の拡張(コミュニティ検証中)と、リリース工程の見直しに関する投稿があるとの記載を読み取りましたが、公開日を確認できず<strong>未確認</strong>です。24時間以内かどうかは判断できていません。</p>
+<p><strong>Anthropicニュース:</strong> 最新は11/18付の新規株式公開に関する投稿のみで、エージェント関連の24時間以内の投稿は<strong>該当なし</strong>。</p>
+<p><strong>Claude Platform release notes:</strong> 取得できたコピーの最新は11/17(Linked billing ベータ)で、24時間以内の新規エントリは<strong>該当なし</strong>(コピーが最新でない可能性あり)。</p>
+</div>
+
+<p style="font-size:.8rem;color:#777">本ページは各出典の要約であり、投資・購入の助言ではありません。</p>
+</body>
+</html>
