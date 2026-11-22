@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIエージェント Daily Digest 2026-11-22</title>
+<style>
+body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.7;margin:0 auto;padding:16px;max-width:640px;color:#222;background:#fff}
+h1{font-size:1.4rem}h2{font-size:1.1rem;margin:0 0 .5em}
+article,.note{border:1px solid #ddd;border-radius:8px;padding:12px 14px;margin:16px 0}
+h3{font-size:.95rem;margin:.8em 0 .1em;color:#555}p{margin:.2em 0}
+a{color:#0b5fff;word-break:break-all}.tag{font-size:.8rem;color:#b00}
+@media(prefers-color-scheme:dark){body{background:#111;color:#eee}article,.note{border-color:#444}h3{color:#aaa}a{color:#7aa7ff}.tag{color:#ff8a8a}}
+</style>
+</head>
+<body>
+<p><a href="index.html">← 一覧へ</a></p>
+<h1>AIエージェント Daily Digest<br>2026-11-22</h1>
+<p>対象: 2026-11-21〜22(JST朝9時時点)の約24時間。公式ページで日付を確認できたものだけを掲載し、確認できないものは「未確認」と明記しています。<strong>この24時間で日付を確認できた該当項目はありませんでした。</strong>無理に埋めていません。</p>
+
+<div class="note">
+<h2>24時間以内の該当: なし(確認できた範囲)</h2>
+<p><strong>Claude Code:</strong> 公式changelogの最新は 2.1.330(11/20付)で、11/21以降の新リリースは確認できず<strong>該当なし</strong>。</p>
+<p><strong>Claude Platform:</strong> リリースノートの最新は 11/17付(Linked billing ベータ)で、24時間以内の追加は<strong>該当なし</strong>。</p>
+<p><strong>MCP公式ブログ:</strong> 最新は 11/11付で、24時間以内の投稿は<strong>該当なし</strong>。</p>
+<p><strong>Anthropicニュース:</strong> 最新は 11/20付(IPO関連の発表のみ)で、エージェント関連の24時間以内の投稿は<strong>該当なし</strong>。</p>
+</div>
+
+<article>
+<h2>参考(24時間より前): Claude Code 2.1.328〜2.1.330 のサブエージェント関連変更</h2>
+<p class="tag">対象期間外(11/19〜11/20付)。直近の動きの参考として掲載。</p>
+<h3>何が起きたか</h3>
+<p>11/19〜20に3つのリリースが出た。2.1.330 では、モデル未指定のエージェントやフォークがフォールバックモデルで動くようになった。2.1.329 では <code>/tasks</code> に予約タスクや <code>/loop</code> の待機、フォークも一覧表示され、背景タスクの件数が一本化された。2.1.328 ではサブエージェントの進捗要約が少ないトークンで書かれるようになった。停止したはずのバックグラウンドエージェントが動き続ける不具合も修正された。</p>
+<h3>なぜ役立つか</h3>
+<p>サブエージェントや <code>/loop</code> を多用する運用では、動いているものを把握しやすくなり、要約に使うトークンも減る。<code>claude -p</code> でサブエージェントの完了待ちをする場合は挙動が変わるので、CIや自動処理の設定を見直す材料になる。</p>
+<h3>出典</h3>
+<p><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog(公式)</a></p>
+</article>
+
+<div class="note">
+<h2>未確認の領域</h2>
+<p><strong>OpenAI:</strong> openai.com にこの環境から接続できず、24時間以内の発表は<strong>未確認</strong>です(該当なしではありません)。</p>
+<p><strong>Google:</strong> blog.google に接続できず<strong>未確認</strong>です。</p>
+<p><strong>GitHubリリース(Claude Code / Agent SDK / MCP SDK / OpenAI Agents SDK):</strong> このセッションからアクセスできず<strong>未確認</strong>です。公式changelogやブログの範囲でのみ確認しています。</p>
+</div>
+
+<p style="font-size:.8rem;color:#777">本ページは各出典の要約であり、投資・購入の助言ではありません。</p>
+</body>
+</html>
