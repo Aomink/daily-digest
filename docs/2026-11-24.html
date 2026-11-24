@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIエージェント Daily Digest 2026-11-24</title>
+<style>
+body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.7;margin:0 auto;padding:16px;max-width:640px;color:#222;background:#fff}
+h1{font-size:1.4rem}h2{font-size:1.1rem;margin:0 0 .5em}
+article,.note{border:1px solid #ddd;border-radius:8px;padding:12px 14px;margin:16px 0}
+h3{font-size:.95rem;margin:.8em 0 .1em;color:#555}p{margin:.2em 0}
+a{color:#0b5fff;word-break:break-all}.tag{font-size:.8rem;color:#b00}
+@media(prefers-color-scheme:dark){body{background:#111;color:#eee}article,.note{border-color:#444}h3{color:#aaa}a{color:#7aa7ff}.tag{color:#ff8a8a}}
+</style>
+</head>
+<body>
+<p><a href="index.html">← 一覧へ</a></p>
+<h1>AIエージェント Daily Digest<br>2026-11-24</h1>
+<p>対象: 2026-11-23〜24(JST朝時点)の約24時間。公式ページに日付が載っていたものだけを掲載し、確認できないものは「未確認」と明記しています。公式ページの日付は日単位のため、11/23付の項目を対象としています。該当は少なめです。</p>
+
+<article>
+<h2>1. Claude Code 2.1.331 リリース</h2>
+<h3>何が起きたか</h3>
+<p>11/23リリース。Amazon Bedrock、Google CloudのAgent Platform、Microsoft Foundry、Claude Platform on AWS のターミナル利用で Code Mode が使えるようになった。プラグインマニフェストの <code>optionalDependencies</code> にも対応。MCPツール呼び出しが不正な応答で最大30分止まる不具合や、managed settings の承認待ちで <code>claude plugin install</code> が止まる不具合も修正された。</p>
+<h3>なぜ役立つか</h3>
+<p>third-party基盤でClaude Codeを使う組織で機能差が縮まる。MCPの長時間ハングが直るため、自動実行の安定性向上が期待できる。</p>
+<h3>出典</h3>
+<p><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog(公式)</a></p>
+</article>
+
+<article>
+<h2>2. Claude Code: 管理プラグインの自動更新が11/30から既定に</h2>
+<h3>何が起きたか</h3>
+<p>同じ2.1.331の変更点として、managed の <code>extraKnownMarketplaces</code> にあるプラグインマーケットプレイスが2026年11月30日から既定で自動更新される。無効にするには <code>"autoUpdate": false</code> を設定する。</p>
+<h3>なぜ役立つか</h3>
+<p>組織でプラグインを配布している管理者は、更新を自動で受けるか固定するかを期限前に決めておける。</p>
+<h3>出典</h3>
+<p><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog(公式)</a></p>
+</article>
+
+<article>
+<h2>3. Claude Opus 4.5 の廃止予告</h2>
+<h3>何が起きたか</h3>
+<p>11/23付で <code>claude-opus-4-5</code> / <code>claude-opus-4-5-20251101</code> が非推奨になり、Claude APIでの提供終了は2027年1月22日。Claude Opus 5.5への移行が案内されている。</p>
+<h3>なぜ役立つか</h3>
+<p>エージェントやバッチ処理でモデルIDを固定している場合、移行先の検証に約2か月の余裕がある。</p>
+<h3>出典</h3>
+<p><a href="https://platform.claude.com/docs/en/release-notes/overview">Claude Platform release notes(公式)</a></p>
+</article>
+
+<article>
+<h2>4. Enterprise Frontier Safeguards(ベータ)と組織Webhook</h2>
+<h3>何が起きたか</h3>
+<p>11/23付。Claude Platformなどで、対象組織向けにゼロデータ保持を提供するベータ機能が始まった。プロンプトと応答の暗号化コピーは顧客自身のクラウドのバケットに送られる。あわせて、そのバケットの日次チェックが失敗/復旧したときの Webhook イベント <code>external_storage.failed</code> / <code>external_storage.recovered</code>(ベータ)が追加された。</p>
+<h3>なぜ役立つか</h3>
+<p>データ保持要件の厳しい企業が、エージェント運用で監査用データを自社管理下に置きやすくなる。保管先の障害にも通知で気づける。ただし対象は対象組織のみで、Anthropic管理ストレージのワークスペースは対象外。</p>
+<h3>出典</h3>
+<p><a href="https://platform.claude.com/docs/en/release-notes/overview">Claude Platform release notes(公式)</a></p>
+</article>
+
+<div class="note">
+<h2>該当なし / 未確認の領域</h2>
+<p><strong>OpenAI:</strong> openai.com にこの環境から接続できず(ネットワーク許可外)、24時間以内の発表は<strong>未確認</strong>です(該当なしではありません)。</p>
+<p><strong>Google:</strong> 公式サイトは取得を試みておらず<strong>未確認</strong>です。検索でも日付を確認できる直近の発表は見つかりませんでした。</p>
+<p><strong>MCP:</strong> 公式ブログの最新記事は2026-11-11付で、24時間以内の新規投稿は<strong>該当なし</strong>。各SDKのGitHubリリースは<strong>未確認</strong>です。</p>
+<p><strong>Agent SDK / OpenAI Agents SDK:</strong> リリース情報は<strong>未確認</strong>です。</p>
+<p><strong>一般ニュース検索:</strong> 日付を確認できる該当記事は見つかりませんでした。</p>
+</div>
+
+<p style="font-size:.8rem;color:#777">本ページは各出典の要約であり、投資・購入の助言ではありません。</p>
+</body>
+</html>
