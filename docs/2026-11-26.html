@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIエージェント Daily Digest 2026-11-26</title>
+<style>
+body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.7;margin:0 auto;padding:16px;max-width:640px;color:#222;background:#fff}
+h1{font-size:1.4rem}h2{font-size:1.1rem;margin:0 0 .5em}
+article,.note{border:1px solid #ddd;border-radius:8px;padding:12px 14px;margin:16px 0}
+h3{font-size:.95rem;margin:.8em 0 .1em;color:#555}p{margin:.2em 0}
+a{color:#0b5fff;word-break:break-all}.tag{font-size:.8rem;color:#b00}
+@media(prefers-color-scheme:dark){body{background:#111;color:#eee}article,.note{border-color:#444}h3{color:#aaa}a{color:#7aa7ff}.tag{color:#ff8a8a}}
+</style>
+</head>
+<body>
+<p><a href="index.html">← 一覧へ</a></p>
+<h1>AIエージェント Daily Digest<br>2026-11-26</h1>
+<p>対象: 2026-11-25〜26(JST朝9時時点)の約24時間。公式ページで日付を確認できたものだけを掲載し、確認できないものは「未確認」と明記しています。該当は少なめです。</p>
+
+<article>
+<h2>1. Claude Code 2.1.332 リリース</h2>
+<h3>何が起きたか</h3>
+<p>11/25付。MCPサーバー由来のスキルが <code>server:skill</code> として <code>/</code> メニューに出る(ベータ)。スキルやコマンドが読み込むインラインのシェルコマンドを拒否できる <code>PreSkillShellCommand</code> フックが追加された。Bedrock Mantle・Agent Platform・Foundry では、モード未指定ならauto modeで起動する(<code>disableAutoMode</code> を <code>"disable"</code> にすると無効化)。Foundry の既定モデルとAgent Platform/Foundryの <code>sonnet</code> エイリアスは Sonnet 5.5 になった。ほかにMCP SSEサーバーが止まる不具合の修正など、多数の修正がある。</p>
+<h3>なぜ役立つか</h3>
+<p>スキルのシェル実行をフックで統制でき、組織配布時の安全策になる。クラウド経由で使う環境ではauto modeが既定になるため、挙動が変わる点を事前に把握できる。</p>
+<h3>出典</h3>
+<p><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog(公式)</a></p>
+</article>
+
+<article>
+<h2>2. Claude Agent SDK (Python) v0.2.189 公開</h2>
+<h3>何が起きたか</h3>
+<p>GitHubのリリース一覧で、v0.2.189 が11/25付の最新版として表示されている。変更内容はリリース一覧から読み取れず、<strong>未確認</strong>。</p>
+<h3>なぜ役立つか</h3>
+<p>SDKを使う場合、更新の有無に気づける。内容は個別リリースページで確認してから更新するのが安全。</p>
+<h3>出典</h3>
+<p><a href="https://github.com/anthropics/claude-agent-sdk-python/releases">claude-agent-sdk-python releases(GitHub)</a></p>
+</article>
+
+<div class="note">
+<h2>該当なし / 未確認の領域</h2>
+<p><strong>OpenAI:</strong> openai.com にこの環境から接続できず、24時間以内の発表は<strong>未確認</strong>です(該当なしではありません)。検索でも11/25付の確認できる記事は見つかりませんでした。</p>
+<p><strong>Google:</strong> blog.google に接続できず<strong>未確認</strong>です。</p>
+<p><strong>MCP:</strong> 公式ブログ(modelcontextprotocol.io)に接続できず<strong>未確認</strong>です。</p>
+<p><strong>Anthropicニュース:</strong> 一覧の最新の記事は11/20付で、24時間以内の投稿は<strong>該当なし</strong>(11/26の見出しはありましたが題名は取得できず<strong>未確認</strong>)。</p>
+<p><strong>Claude Platform リリースノート:</strong> 11/24〜26付の新規エントリは<strong>該当なし</strong>(最新は11/23)。</p>
+<p><strong>Agent SDK (TypeScript) / OpenAI Agents SDK:</strong> 取得していないため<strong>未確認</strong>です。</p>
+</div>
+
+<p style="font-size:.8rem;color:#777">本ページは各出典の要約であり、投資・購入の助言ではありません。</p>
+</body>
+</html>
