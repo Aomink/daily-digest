@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIエージェント Daily Digest 2026-11-27</title>
+<style>
+body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.7;margin:0 auto;padding:16px;max-width:640px;color:#222;background:#fff}
+h1{font-size:1.4rem}h2{font-size:1.1rem;margin:0 0 .5em}
+article,.note{border:1px solid #ddd;border-radius:8px;padding:12px 14px;margin:16px 0}
+h3{font-size:.95rem;margin:.8em 0 .1em;color:#555}p{margin:.2em 0}
+a{color:#0b5fff;word-break:break-all}.tag{font-size:.8rem;color:#b00}
+@media(prefers-color-scheme:dark){body{background:#111;color:#eee}article,.note{border-color:#444}h3{color:#aaa}a{color:#7aa7ff}.tag{color:#ff8a8a}}
+</style>
+</head>
+<body>
+<p><a href="index.html">← 一覧へ</a></p>
+<h1>AIエージェント Daily Digest<br>2026-11-27</h1>
+<p>対象: 2026-11-26〜27(JST朝9時時点)の約24時間。公式ページで日付を確認できたものだけを掲載し、確認できないものは「未確認」と明記しています。24時間以内と断定できる該当はありませんでした。</p>
+
+<article>
+<h2>1. Claude Code 2.1.332(参考・境界付近)</h2>
+<p class="tag">11/25付。リリース時刻は未確認のため、24時間以内かどうかは断定できません。</p>
+<h3>何が起きたか</h3>
+<p>MCPサーバーが提供するスキルをClaude Codeで使える機能(ベータ)が追加され、<code>/</code>メニューに <code>server:skill</code> として表示される。スキルやコマンドの読み込み時にインラインのシェルコマンドを拒否できる <code>PreSkillShellCommand</code> フックも加わった。デスクトップのCodeタブのOpenTelemetry <code>service.name</code> 既定値は <code>claude-code-desktop</code> に変わった。</p>
+<h3>なぜ役立つか</h3>
+<p>MCP経由でスキルを配布している場合に使える。フックで外部由来のスキルのシェル実行を事前にチェックできる。テレメトリのフィルタを <code>claude-code</code> 名で組んでいる場合は見直しが必要。</p>
+<h3>出典</h3>
+<p><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog(公式)</a> / <a href="https://github.com/anthropics/claude-code/releases">GitHub Releases</a></p>
+</article>
+
+<div class="note">
+<h2>該当なし / 未確認の領域</h2>
+<p><strong>OpenAI:</strong> openai.com にこの環境から接続できず(ネットワーク制限)、24時間以内の発表は<strong>未確認</strong>です(該当なしではありません)。</p>
+<p><strong>Google:</strong> blog.google に接続できず<strong>未確認</strong>です。</p>
+<p><strong>Claude Platform リリースノート:</strong> 最新エントリは11/23付で、11/25以降の記載は<strong>該当なし</strong>(ページの後半は一部未読)。</p>
+<p><strong>Anthropicニュース:</strong> 最新は11/20付で、24時間以内の投稿は<strong>該当なし</strong>。</p>
+<p><strong>MCP:</strong> 公式ブログの最新は11/24付(Two Years of MCP Builders)で、24時間以内の新規投稿は<strong>該当なし</strong>。各SDKのリリースは<strong>未確認</strong>です。</p>
+<p><strong>Agent SDK / OpenAI Agents SDK:</strong> 個別のリリース情報は<strong>未確認</strong>です。</p>
+<p><strong>その他の事例・新ツール:</strong> Web検索では日付と一次情報を確認できる該当が見つかりませんでした(集約サイトの記事のみで裏取りできず、掲載を見送り)。</p>
+</div>
+
+<p style="font-size:.8rem;color:#777">本ページは各出典の要約であり、投資・購入の助言ではありません。</p>
+</body>
+</html>
